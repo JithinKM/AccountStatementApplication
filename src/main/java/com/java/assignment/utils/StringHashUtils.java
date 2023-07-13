@@ -28,6 +28,8 @@ public class StringHashUtils {
         try {
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
             byte[] encodedHash = digest.digest(originalString.getBytes(StandardCharsets.UTF_8));
+
+            //Generate hash string from the byte array
             hashedString = bytesToHex(encodedHash);
         } catch (NoSuchAlgorithmException e) {
             logger.error("Error getting hashing algorithm: " + e.getMessage());
@@ -36,6 +38,12 @@ public class StringHashUtils {
         return hashedString;
     }
 
+    /**
+     * Generate string from the byte array
+     *
+     * @param hash the hashed byte array
+     * @return hashed string
+     */
     private static String bytesToHex(byte[] hash) {
         StringBuilder hexString = new StringBuilder(2 * hash.length);
         for (int i = 0; i < hash.length; i++) {

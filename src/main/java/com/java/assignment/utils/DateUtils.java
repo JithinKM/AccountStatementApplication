@@ -1,6 +1,7 @@
 package com.java.assignment.utils;
 
 import com.java.assignment.constants.AppConstants;
+import com.java.assignment.exception.BusinessException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -30,7 +31,8 @@ public class DateUtils {
         try {
              date = LocalDate.parse(dateString, formatter);
         } catch (DateTimeParseException e) {
-            logger.error("Error parsing date: " + e.getMessage());
+            logger.error(AppConstants.INVALID_DATE + e.getMessage());
+            throw new BusinessException(AppConstants.INVALID_DATE + dateString);
         }
 
         return date;
