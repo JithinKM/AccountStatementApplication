@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.util.matcher.RegexRequestMatcher;
 
 /**
  * Security Configuration class
@@ -40,6 +41,8 @@ public class SecurityConfiguration {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests((requests) -> requests
+                        .requestMatchers(RegexRequestMatcher.regexMatcher("\\/account\\/[0-9]+[?][a-zA-Z]+[=].*"))
+                        .hasRole("ADMIN")
                         .anyRequest().authenticated())
                 .formLogin((login) -> login.permitAll())
                 .logout((logout) -> logout.permitAll());
