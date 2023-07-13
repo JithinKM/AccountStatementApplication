@@ -34,8 +34,10 @@ public class AccountController {
      * @return statements list
      */
     @GetMapping("/account/{id}")
-    ResponseEntity<AccountStatement> getAccount(
-            @PathVariable("id") long id, @RequestParam String fromDate, @RequestParam String toDate,
+    ResponseEntity<AccountStatement> getAccountStatement(
+            @PathVariable("id") long id,
+            @RequestParam(required = false) String fromDate,
+            @RequestParam(required = false) String toDate,
             @RequestParam(value = "fromAmount", defaultValue = "0") Long fromAmount,
             @RequestParam(value = "toAmount", defaultValue = Long.MAX_VALUE + "") Long toAmount) {
 
