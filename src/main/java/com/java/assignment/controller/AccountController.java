@@ -25,6 +25,11 @@ public class AccountController {
     @Autowired
     private AccountService accountService;
 
+    /**
+     * Get all accounts list
+     *
+     * @return all account list
+     */
     @GetMapping
     ResponseEntity<List<Account>> getHomePage() {
 

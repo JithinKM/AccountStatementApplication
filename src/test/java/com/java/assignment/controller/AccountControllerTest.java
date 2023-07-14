@@ -24,6 +24,14 @@ public class AccountControllerTest {
 
     @Test
     @WithMockUser(roles="USER")
+    public void getHomePageSuccessTest() throws Exception {
+
+        this.mockMvc.perform(get("/"))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    @WithMockUser(roles="USER")
     public void getAccountStatementSuccessTest() throws Exception {
 
         this.mockMvc.perform(get("/account/3"))
