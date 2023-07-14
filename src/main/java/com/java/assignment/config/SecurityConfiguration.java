@@ -1,6 +1,7 @@
 package com.java.assignment.config;
 
 import com.java.assignment.constants.AppConstants;
+import org.springframework.boot.web.servlet.ServletListenerRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -10,6 +11,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.session.HttpSessionEventPublisher;
 import org.springframework.security.web.util.matcher.RegexRequestMatcher;
 
 /**
@@ -38,6 +40,15 @@ public class SecurityConfiguration {
         return new InMemoryUserDetailsManager(user, admin);
     }
 
+    /**
+     * Bean for {@link ServletListenerRegistrationBean}.
+     * The method is to create bean for session event publisher
+     */
+    @Bean
+    public ServletListenerRegistrationBean<HttpSessionEventPublisher> httpSessionEventPublisher() {
+        return new ServletListenerRegistrationBean<>(new HttpSessionEventPublisher());
+    }
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests((requests) -> requests
@@ -45,7 +56,10 @@ public class SecurityConfiguration {
                         .hasRole("ADMIN")
                         .anyRequest().authenticated())
                 .formLogin((login) -> login.permitAll())
-                .logout((logout) -> logout.permitAll());
+                .logout((logout) -> logout.permitAll())
+                .sessionManagement(session ->
+                        session.maximumSessions(1).maxSessionsPreventsLogin(true)
+                );
 
         return http.build();
     }
