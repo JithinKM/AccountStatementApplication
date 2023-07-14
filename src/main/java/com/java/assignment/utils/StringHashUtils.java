@@ -1,5 +1,6 @@
 package com.java.assignment.utils;
 
+import com.java.assignment.constants.AppConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -26,7 +27,7 @@ public class StringHashUtils {
 
         String hashedString = "";
         try {
-            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            MessageDigest digest = MessageDigest.getInstance(AppConstants.SHA_ALGO);
             byte[] encodedHash = digest.digest(originalString.getBytes(StandardCharsets.UTF_8));
 
             //Generate hash string from the byte array

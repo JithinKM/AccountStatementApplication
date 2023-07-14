@@ -7,6 +7,7 @@ package com.java.assignment.constants;
  */
 public class AppConstants {
     public static final String DATE_FORMAT = "dd-MM-yyyy";
+    public static final String SHA_ALGO = "SHA-256";
 
     //User roles
     public static final String ROLE_USER = "USER";
