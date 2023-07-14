@@ -13,6 +13,7 @@ import java.util.List;
  */
 public interface AccountRepository {
 
+    List<AccountEntity> getAllAccounts();
     AccountEntity getAccountByAccountId(Long accountId);
     List<StatementEntity> getStatementByAccountNumber(long accountId, long fromAmount, long toAmount, LocalDate fromDate, LocalDate toDate);
 }

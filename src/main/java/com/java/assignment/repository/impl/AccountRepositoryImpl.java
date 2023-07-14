@@ -25,6 +25,16 @@ public class AccountRepositoryImpl implements AccountRepository {
     private JdbcTemplate jdbcTemplate;
 
     /**
+     * Get all accounts
+     *
+     * @return list of Account
+     */
+    @Override
+    public List<AccountEntity> getAllAccounts() {
+        return jdbcTemplate.query("SELECT * FROM account", new AccountMapper());
+    }
+
+    /**
      * Get account details from the Account table for a specific accountId
      *
      * @param accountId account id for which the account details to be fetched

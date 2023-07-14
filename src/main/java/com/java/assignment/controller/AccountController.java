@@ -1,5 +1,6 @@
 package com.java.assignment.controller;
 
+import com.java.assignment.model.Account;
 import com.java.assignment.model.AccountStatement;
 import com.java.assignment.service.AccountService;
 import org.slf4j.Logger;
@@ -8,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * Account controller class
@@ -21,6 +24,13 @@ public class AccountController {
 
     @Autowired
     private AccountService accountService;
+
+    @GetMapping
+    ResponseEntity<List<Account>> getHomePage() {
+
+        List<Account> allAccounts = accountService.getAllAccounts();
+        return new ResponseEntity<>(allAccounts, HttpStatus.OK);
+    }
 
     /**
      * Get account details along with the statement

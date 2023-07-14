@@ -4,6 +4,7 @@ import com.java.assignment.constants.AppConstants;
 import com.java.assignment.entity.AccountEntity;
 import com.java.assignment.entity.StatementEntity;
 import com.java.assignment.exception.BusinessException;
+import com.java.assignment.model.Account;
 import com.java.assignment.model.AccountStatement;
 import com.java.assignment.model.Statement;
 import com.java.assignment.repository.AccountRepository;
@@ -32,6 +33,22 @@ public class AccountServiceImpl implements AccountService {
 
     @Autowired
     private AccountRepository accountRepository;
+
+    /**
+     * Get all account details
+     *
+     * @return list of account
+     */
+    @Override
+    public List<Account> getAllAccounts() {
+
+        List<AccountEntity> allAccounts = accountRepository.getAllAccounts();
+
+        return allAccounts.stream().map(accountEntity ->
+                new Account(accountEntity.getId(), accountEntity.getAccountType(),
+                        StringHashUtils.getHashedString(accountEntity.getAccountNumber())))
+                .toList();
+    }
 
     /**
      * Get account details along with the statement
