@@ -23,6 +23,10 @@ import org.springframework.security.web.util.matcher.RegexRequestMatcher;
 @EnableWebSecurity
 public class SecurityConfiguration {
 
+    /**
+     * Bean for {@link UserDetailsService}.
+     * The method is to create bean for user details service
+     */
     @Bean
     public UserDetailsService userDetailsService() {
         UserDetails user = User.withDefaultPasswordEncoder()
@@ -49,6 +53,10 @@ public class SecurityConfiguration {
         return new ServletListenerRegistrationBean<>(new HttpSessionEventPublisher());
     }
 
+    /**
+     * Bean for {@link SecurityFilterChain}.
+     * The method is to create security filter chain
+     */
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests((requests) -> requests
