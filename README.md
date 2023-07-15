@@ -27,6 +27,15 @@ The SonarQube in stance must be running on our localhost.
 
 sonarqube-token: Generated from the SonarQube application.
 
+## Code Analysis with CheckStyle
+
+
+Run the following command to generate the CheckStyle report.
+
+`mvn checkstyle:checkstyle`
+
+The report can be accessed at: `target/site/checkstyle.html`
+
 ## Run the application
 Start the application by executing the following command from the project root directory:
 `java -jar .\target\assignment-0.0.1-SNAPSHOT.jar`
