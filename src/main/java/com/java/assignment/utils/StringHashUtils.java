@@ -9,7 +9,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 /**
- * Utility class for String hashing
+ * Utility class for String hashing.
  *
  * @author Jithin KM
  */
@@ -40,16 +40,16 @@ public class StringHashUtils {
     }
 
     /**
-     * Generate string from the byte array
+     * Generate string from the byte array.
      *
      * @param hash the hashed byte array
      * @return hashed string
      */
-    private static String bytesToHex(byte[] hash) {
+    private static String bytesToHex(final byte[] hash) {
         StringBuilder hexString = new StringBuilder(2 * hash.length);
         for (int i = 0; i < hash.length; i++) {
             String hex = Integer.toHexString(0xff & hash[i]);
-            if(hex.length() == 1) {
+            if (hex.length() == 1) {
                 hexString.append('0');
             }
             hexString.append(hex);

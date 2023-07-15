@@ -1,7 +1,7 @@
 package com.java.assignment.constants;
 
 /**
- * App Constants class
+ * App Constants class.
  *
  * @author Jithin KM
  */

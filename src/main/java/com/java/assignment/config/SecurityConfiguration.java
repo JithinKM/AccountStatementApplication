@@ -15,7 +15,7 @@ import org.springframework.security.web.session.HttpSessionEventPublisher;
 import org.springframework.security.web.util.matcher.RegexRequestMatcher;
 
 /**
- * Security Configuration class
+ * Security Configuration class.
  *
  * @author Jithin KM
  */
@@ -26,6 +26,8 @@ public class SecurityConfiguration {
     /**
      * Bean for {@link UserDetailsService}.
      * The method is to create bean for user details service
+     *
+     * @return UserDetailsService
      */
     @Bean
     public UserDetailsService userDetailsService() {
@@ -47,6 +49,8 @@ public class SecurityConfiguration {
     /**
      * Bean for {@link ServletListenerRegistrationBean}.
      * The method is to create bean for session event publisher
+     *
+     * @return ServletListenerRegistrationBean
      */
     @Bean
     public ServletListenerRegistrationBean<HttpSessionEventPublisher> httpSessionEventPublisher() {
@@ -56,9 +60,13 @@ public class SecurityConfiguration {
     /**
      * Bean for {@link SecurityFilterChain}.
      * The method is to create security filter chain
+     * @param http HttpSecurity
+     * @throws {@link Exception}
+     *
+     * @return SecurityFilterChain
      */
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain securityFilterChain(final HttpSecurity http) throws Exception {
         http.authorizeHttpRequests((requests) -> requests
                         .requestMatchers(RegexRequestMatcher.regexMatcher("\\/account\\/[0-9]+[?][a-zA-Z]+[=].*"))
                         .hasRole("ADMIN")

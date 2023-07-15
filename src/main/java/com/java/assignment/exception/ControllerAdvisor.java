@@ -12,16 +12,16 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * Controller Advisor class
+ * Controller Advisor class.
  *
  * @author Jithin KM
  */
 @ControllerAdvice
-public class ControllerAdvisor extends ResponseEntityExceptionHandler {
+public final class ControllerAdvisor extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(AccountNotFoundException.class)
     public ResponseEntity<Object> handleAccountNotFoundException(
-            AccountNotFoundException e, WebRequest request) {
+            final AccountNotFoundException e, final WebRequest request) {
 
         Map<String, Object> body = new LinkedHashMap<>();
         body.put("timestamp", LocalDateTime.now());
@@ -32,7 +32,7 @@ public class ControllerAdvisor extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(BusinessException.class)
     public ResponseEntity<Object> handleBusinessException(
-            BusinessException e, WebRequest request) {
+            final BusinessException e, final WebRequest request) {
 
         Map<String, Object> body = new LinkedHashMap<>();
         body.put("timestamp", LocalDateTime.now());

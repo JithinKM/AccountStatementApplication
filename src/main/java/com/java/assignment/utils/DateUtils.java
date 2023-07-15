@@ -10,7 +10,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
 /**
- * Utility class for date operations
+ * Utility class for date operations.
  *
  * @author Jithin KM
  */
@@ -20,7 +20,7 @@ public class DateUtils {
     private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern(AppConstants.DATE_FORMAT);
 
     /**
-     * Parse the date string to the specified date format
+     * Parse the date string to the specified date format.
      *
      * @param dateString the date value in string format
      * @return parsed date

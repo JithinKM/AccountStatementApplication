@@ -1,11 +1,11 @@
 package com.java.assignment.entity;
 
 /**
- * Entity class for statement
+ * Entity class for statement.
  *
  * @author Jithin KM
  */
-public class StatementEntity {
+public final class StatementEntity {
 
     private long id;
 
@@ -13,7 +13,7 @@ public class StatementEntity {
     private String dateField;
     private String amount;
 
-    public StatementEntity(long id, long accountId, String dateField, String amount) {
+    public StatementEntity(final long id, final long accountId, final String dateField, final String amount) {
         this.id = id;
         this.accountId = accountId;
         this.dateField = dateField;
@@ -24,7 +24,7 @@ public class StatementEntity {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(final long id) {
         this.id = id;
     }
 
@@ -32,7 +32,7 @@ public class StatementEntity {
         return accountId;
     }
 
-    public void setAccountId(long accountId) {
+    public void setAccountId(final long accountId) {
         this.accountId = accountId;
     }
 
@@ -40,7 +40,7 @@ public class StatementEntity {
         return dateField;
     }
 
-    public void setDateField(String dateField) {
+    public void setDateField(final String dateField) {
         this.dateField = dateField;
     }
 
@@ -48,7 +48,7 @@ public class StatementEntity {
         return amount;
     }
 
-    public void setAmount(String amount) {
+    public void setAmount(final String amount) {
         this.amount = amount;
     }
 }

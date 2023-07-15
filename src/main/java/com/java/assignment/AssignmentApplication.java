@@ -4,14 +4,17 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * Application class
+ * Application class.
  *
  * @author Jithin KM
  */
 @SpringBootApplication
 public class AssignmentApplication {
 
-	public static void main(String[] args) {
+	/**
+	 * Run the spring boot application.
+	 */
+	public static void main(final String[] args) {
 		SpringApplication.run(AssignmentApplication.class, args);
 	}
 

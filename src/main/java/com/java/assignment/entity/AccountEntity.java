@@ -1,18 +1,18 @@
 package com.java.assignment.entity;
 
 /**
- * Entity class for account
+ * Entity class for account.
  *
  * @author Jithin KM
  */
-public class AccountEntity {
+public final class AccountEntity {
 
     private long id;
 
     private String accountType;
     private String accountNumber;
 
-    public AccountEntity(long id, String accountType, String accountNumber) {
+    public AccountEntity(final long id, final String accountType, final String accountNumber) {
         this.id = id;
         this.accountType = accountType;
         this.accountNumber = accountNumber;
@@ -26,7 +26,7 @@ public class AccountEntity {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(final long id) {
         this.id = id;
     }
 
@@ -34,7 +34,7 @@ public class AccountEntity {
         return accountType;
     }
 
-    public void setAccountType(String accountType) {
+    public void setAccountType(final String accountType) {
         this.accountType = accountType;
     }
 
@@ -42,7 +42,7 @@ public class AccountEntity {
         return accountNumber;
     }
 
-    public void setAccountNumber(String accountNumber) {
+    public void setAccountNumber(final String accountNumber) {
         this.accountNumber = accountNumber;
     }
 }

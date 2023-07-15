@@ -3,11 +3,11 @@ package com.java.assignment.model;
 import java.util.List;
 
 /**
- * Model class for storing account details
+ * Model class for storing account details.
  *
  * @author Jithin KM
  */
-public class Account {
+public final class Account {
 
     private long accountId;
 
@@ -15,7 +15,7 @@ public class Account {
 
     private String accountNumber;
 
-    public Account(long accountId, String accountType, String accountNumber) {
+    public Account(final long accountId, final String accountType, final String accountNumber) {
         this.accountId = accountId;
         this.accountType = accountType;
         this.accountNumber = accountNumber;
@@ -25,7 +25,7 @@ public class Account {
         return accountId;
     }
 
-    public void setAccountId(long accountId) {
+    public void setAccountId(final long accountId) {
         this.accountId = accountId;
     }
 
@@ -33,7 +33,7 @@ public class Account {
         return accountType;
     }
 
-    public void setAccountType(String accountType) {
+    public void setAccountType(final String accountType) {
         this.accountType = accountType;
     }
 
@@ -41,7 +41,7 @@ public class Account {
         return accountNumber;
     }
 
-    public void setAccountNumber(String accountNumber) {
+    public void setAccountNumber(final String accountNumber) {
         this.accountNumber = accountNumber;
     }
 }

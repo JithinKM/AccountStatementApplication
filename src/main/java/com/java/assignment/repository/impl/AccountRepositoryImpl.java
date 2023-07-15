@@ -14,7 +14,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 /**
- * Account repository implementation
+ * Account repository implementation.
  *
  * @author Jithin KM
  */
@@ -35,13 +35,13 @@ public class AccountRepositoryImpl implements AccountRepository {
     }
 
     /**
-     * Get account details from the Account table for a specific accountId
+     * Get account details from the Account table for a specific accountId.
      *
      * @param accountId account id for which the account details to be fetched
      * @return Account details
      */
     @Override
-    public AccountEntity getAccountByAccountId(Long accountId) {
+    public AccountEntity getAccountByAccountId(final Long accountId) {
 
         List<AccountEntity> accountEntities = jdbcTemplate.query("SELECT * FROM account WHERE id = ?",
                 new AccountMapper(), accountId);
@@ -50,15 +50,19 @@ public class AccountRepositoryImpl implements AccountRepository {
     }
 
     /**
-     * Get statement from the Statement table for a specific accountId
+     * Get statement from the Statement table for a specific accountId.
      *
      * @param accountId account id for which the statement to be fetched
      * @return list of statements
      */
     @Override
-    public List<StatementEntity> getStatementByAccountNumber(long accountId, long fromAmount, long toAmount, LocalDate fromDate, LocalDate toDate) {
+    public List<StatementEntity> getStatementByAccountNumber(final long accountId, final long fromAmount,
+                                                             final long toAmount, final LocalDate fromDate,
+                                                             final LocalDate toDate) {
 
-        return jdbcTemplate.query("SELECT * FROM statement WHERE account_id = ? AND CAST(amount AS FLOAT) > ? AND CAST(amount AS FLOAT) < ? AND TO_DATE(datefield, 'dd.mm.yyyy') > ? AND TO_DATE(datefield, 'dd.mm.yyyy') < ?",
+        return jdbcTemplate.query("SELECT * FROM statement WHERE account_id = ? AND CAST(amount AS FLOAT) > ? " +
+                        "AND CAST(amount AS FLOAT) < ? AND TO_DATE(datefield, 'dd.mm.yyyy') > ? " +
+                        "AND TO_DATE(datefield, 'dd.mm.yyyy') < ?",
                 new StatementMapper(), accountId, fromAmount, toAmount, fromDate, toDate);
     }
 }

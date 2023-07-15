@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * Account service implementation
+ * Account service implementation.
  *
  * @author Jithin KM
  */
@@ -35,7 +35,7 @@ public class AccountServiceImpl implements AccountService {
     private AccountRepository accountRepository;
 
     /**
-     * Get all account details
+     * Get all account details.
      *
      * @return list of account
      */
@@ -59,7 +59,8 @@ public class AccountServiceImpl implements AccountService {
      * @return account statement
      */
     @Override
-    public AccountStatement getAccountStatements(long id, String fromDateString, String toDateString, long fromAmount, long toAmount) {
+    public AccountStatement getAccountStatements(final long id, final String fromDateString, final String toDateString,
+                                                 final long fromAmount, final long toAmount) {
 
         LocalDate threeMonthsAgo = LocalDate.now().minusDays(90);
         LocalDate today = LocalDate.now();
@@ -79,8 +80,10 @@ public class AccountServiceImpl implements AccountService {
             logger.error(AppConstants.INCORRECT_DATE + fromDate.toString().concat(", ").concat(toDate.toString()));
             throw new BusinessException(AppConstants.INCORRECT_DATE);
         }
-        if(fromAmount > toAmount) {
-            logger.error(AppConstants.INCORRECT_AMOUNT + String.valueOf(fromAmount).concat(", ").concat(String.valueOf(toAmount)));
+
+        if (fromAmount > toAmount) {
+            logger.error(AppConstants.INCORRECT_AMOUNT + String.valueOf(fromAmount).concat(", ")
+                    .concat(String.valueOf(toAmount)));
             throw new BusinessException(AppConstants.INCORRECT_AMOUNT);
         }
 
@@ -90,7 +93,8 @@ public class AccountServiceImpl implements AccountService {
         String hashedAccountNumber = StringHashUtils.getHashedString(account.getAccountNumber());
 
         //Get the statements from the repository
-        List<StatementEntity> statementEntityList = accountRepository.getStatementByAccountNumber(id, fromAmount, toAmount, fromDate, toDate);
+        List<StatementEntity> statementEntityList = accountRepository.getStatementByAccountNumber(id, fromAmount,
+                toAmount, fromDate, toDate);
         List<Statement> statementList = statementEntityList.stream().map(
                 statementEntity -> new Statement(statementEntity.getDateField(), statementEntity.getAmount())).toList();
 

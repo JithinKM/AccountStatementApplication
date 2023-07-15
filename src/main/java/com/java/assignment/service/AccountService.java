@@ -6,7 +6,7 @@ import com.java.assignment.model.AccountStatement;
 import java.util.List;
 
 /**
- * Account service
+ * Account service.
  *
  * @author Jithin KM
  */

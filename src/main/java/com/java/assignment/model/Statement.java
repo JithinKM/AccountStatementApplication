@@ -1,16 +1,16 @@
 package com.java.assignment.model;
 
 /**
- * Model class for storing statement details
+ * Model class for storing statement details.
  *
  * @author Jithin KM
  */
-public class Statement {
+public final class Statement {
 
     private String dateField;
     private String amount;
 
-    public Statement(String dateField, String amount) {
+    public Statement(final String dateField, final String amount) {
         this.dateField = dateField;
         this.amount = amount;
     }
@@ -19,7 +19,7 @@ public class Statement {
         return dateField;
     }
 
-    public void setDateField(String dateField) {
+    public void setDateField(final String dateField) {
         this.dateField = dateField;
     }
 
@@ -27,7 +27,7 @@ public class Statement {
         return amount;
     }
 
-    public void setAmount(String amount) {
+    public void setAmount(final String amount) {
         this.amount = amount;
     }
 }
