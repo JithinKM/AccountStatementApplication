@@ -23,7 +23,7 @@ An application to fetch the statements for a given account.
 Run the following command to generate the Sonar report.
 The SonarQube in stance must be running on our localhost.
 
-`mvn sonar:sonar -Dsonar.login={sonarqube-token}`
+`mvn clean verify sonar:sonar -Dsonar.projectKey=AccountStatementApplication -Dsonar.projectName='AccountStatementApplication' -Dsonar.token={sonarqube-token}`
 
 sonarqube-token: Generated from the SonarQube application.
 
