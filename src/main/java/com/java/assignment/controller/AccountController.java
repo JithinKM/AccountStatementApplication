@@ -3,8 +3,6 @@ package com.java.assignment.controller;
 import com.java.assignment.model.Account;
 import com.java.assignment.model.AccountStatement;
 import com.java.assignment.service.AccountService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +22,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/")
 public class AccountController {
-    private static final Logger logger = LoggerFactory.getLogger(AccountController.class);
 
     @Autowired
     private AccountService accountService;

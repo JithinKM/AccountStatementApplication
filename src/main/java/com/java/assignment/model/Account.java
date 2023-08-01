@@ -1,7 +1,5 @@
 package com.java.assignment.model;
 
-import java.util.List;
-
 /**
  * Model class for storing account details.
  *

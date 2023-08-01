@@ -17,6 +17,9 @@ public class StringHashUtils {
 
     private static final Logger logger = LoggerFactory.getLogger(StringHashUtils.class);
 
+    private StringHashUtils() {
+    }
+
     /**
      * Generate hashed string
      *
@@ -33,7 +36,7 @@ public class StringHashUtils {
             //Generate hash string from the byte array
             hashedString = bytesToHex(encodedHash);
         } catch (NoSuchAlgorithmException e) {
-            logger.error("Error getting hashing algorithm: " + e.getMessage());
+            logger.error(String.format(AppConstants.INVALID_ALGO, e.getMessage()));
         }
 
         return hashedString;

@@ -19,6 +19,9 @@ public class DateUtils {
     private static final Logger logger = LoggerFactory.getLogger(DateUtils.class);
     private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern(AppConstants.DATE_FORMAT);
 
+    private DateUtils() {
+    }
+
     /**
      * Parse the date string to the specified date format.
      *
@@ -31,7 +34,7 @@ public class DateUtils {
         try {
              date = LocalDate.parse(dateString, formatter);
         } catch (DateTimeParseException e) {
-            logger.error(AppConstants.INVALID_DATE + e.getMessage());
+            logger.error(String.format(AppConstants.INVALID_DATE, e.getMessage()));
             throw new BusinessException(AppConstants.INVALID_DATE + dateString);
         }
 
